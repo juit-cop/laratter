@@ -55,4 +55,15 @@ class User extends Authenticatable
   {
     return $this->hasMany(Tweet::class);
   } 
+
+  public function likes()
+  {
+      return $this->belongsToMany(Tweet::class)->withTimestamps();
+  }
+
+  // 🔽 1対多の関係
+  public function comments()
+  {
+    return $this->hasMany(Comment::class);
+  }
 }
