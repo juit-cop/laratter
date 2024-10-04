@@ -38,6 +38,14 @@ class ProfileController extends Controller
     return view('profile.show', compact('user', 'tweets'));
   }
 
+  public function edit(Request $request): View
+    {
+        return view('profile.edit', [
+            'user' => $request->user(),
+        ]);
+    }
+
+
     /**
      * Update the user's profile information.
      */
@@ -75,3 +83,5 @@ class ProfileController extends Controller
         return Redirect::to('/');
     }
 }
+
+

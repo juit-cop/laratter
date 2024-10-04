@@ -102,4 +102,13 @@ class TweetController extends Controller
   return view('tweets.search', compact('tweets'));
 }
 
+public function liked()
+{
+    $user = auth()->user();
+    $likedTweets = auth()->user()->likes()->with('tweet.user', 'tweet.comments')->latest()->get()->pluck('tweet');
+    
+    return view('tweets.liked', compact('likedTweets'));
+}
+
+
 }

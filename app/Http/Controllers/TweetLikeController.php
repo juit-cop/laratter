@@ -13,7 +13,10 @@ class TweetLikeController extends Controller
      */
     public function index()
     {
-        //
+      $user = Auth::user();
+      $likedTweets = $user->likedTweets()->with('user')->latest()->paginate(20);
+
+      return view('tweets.liked', compact('likedTweets'));
     }
 
     /**
